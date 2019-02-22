@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">GreenLine</string>
+    <string name="ID">担当者</string>
+    <string name="remember_id">担当者IDを記憶する。</string>
+    <string name="login">ログイン</string>
+    <string name="input_id_hit">あなたのIDを入力してください</string>
+
+    <string name="menu_title">Mode Selection</string>
+    <string name="btn1_txt">Driver Mode</string>
+    <string name="btn2_txt">Center Work Mode</string>
+    <string name="btn3_txt">Logout</string>
+    <string name="menu_id_show">038 緑川 一郎</string>
 </resources>
