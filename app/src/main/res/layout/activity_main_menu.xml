@@ -31,6 +31,7 @@
                   android:layout_gravity="center"
                   android:orientation="vertical">
         <Button
+                android:onClick="driverClick"
                 android:id="@+id/button_driverMode"
                 android:layout_gravity="center"
                 android:layout_width="match_parent"
@@ -40,7 +41,7 @@
                 android:paddingStart="50dp"
                 android:paddingEnd="50dp"
                 android:background="@drawable/button_blue"
-                android:text="@string/btn1_txt"/>
+                android:text="@string/driverMode"/>
         <Button
                 android:id="@+id/button_workMode"
                 android:layout_gravity="center"
@@ -51,7 +52,7 @@
                 android:paddingStart="50dp"
                 android:paddingEnd="50dp"
                 android:background="@drawable/button_blue"
-                android:text="@string/btn2_txt"/>
+                android:text="@string/centerWorkMode"/>
     </LinearLayout>
 
     <Button
@@ -64,5 +65,5 @@
             android:paddingStart="50dp"
             android:paddingEnd="50dp"
             android:background="@drawable/button_green"
-            android:text="@string/btn3_txt"/>
+            android:text="@string/logout"/>
 </LinearLayout>

@@ -5,13 +5,13 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 
-class MainActivity : AppCompatActivity() {
+class MainMenu : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_main_menu)
     }
-    public fun loginClick(view: View) {
-        startActivity(Intent(this@MainActivity, MainMenu::class.java))
+    public fun driverClick(view: View) {
+        startActivity(Intent(this@MainMenu, DriverMenu::class.java))
     }
 }

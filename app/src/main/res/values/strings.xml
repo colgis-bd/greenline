@@ -6,8 +6,22 @@
     <string name="input_id_hit">あなたのIDを入力してください</string>
 
     <string name="menu_title">モード選択</string>
-    <string name="btn1_txt">ドライバーモード</string>
-    <string name="btn2_txt">センター作業モード</string>
-    <string name="btn3_txt">ログアウト</string>
+    <string name="driverMode">ドライバーモード</string>
+    <string name="centerWorkMode">センター作業モード</string>
+    <string name="logout">ログアウト</string>
     <string name="menu_id_show">038 緑川 一郎</string>
+
+    <string name="driverMenuOption_HoldOut">持出</string>
+    <string name="driverMenuOption_Delivery">配達</string>
+    <string name="driverMenuOption_DeliveryCompleteList">配達完了一覧</string>
+    <string name="driverMenuOption_TakeOutCenter">センター持ち帰り</string>
+    <string name="driverMenuOption_LoadList">積荷一覧</string>
+    <string name="driverMenuOption_HighPricedItemPickup">高額商品　集荷</string>
+    <string name="driverMenuOption_Medical_Institution_Search">医療機関検索</string>
+    <string name="driverMenuOption_Plans">予定</string>
+
+    <string name="enterTitle">持出</string>
+    <string name="returnPrevious">戻る</string>
+    <string name="newReceiptText">新規荷受</string>
+    <string name="productList">荷受一覧</string>
 </resources>
