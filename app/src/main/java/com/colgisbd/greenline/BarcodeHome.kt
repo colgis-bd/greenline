@@ -12,4 +12,11 @@ class BarcodeHome : AppCompatActivity() {
         setContentView(R.layout.activity_barcode_home)
     }
 
+    public fun barcodeReader(view: View) {
+        startActivity(Intent(this@BarcodeHome, BarcodeReader::class.java))
+    }
+
+    public fun cameraReader(view: View) {
+        startActivity(Intent(this@BarcodeHome, CameraActivity::class.java))
+    }
 }
