@@ -13,6 +13,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
     }
     public fun loginClick(view: View) {
-        startActivity(Intent(this@MainActivity, MainMenu::class.java))
+        startActivity(Intent(this@MainActivity, CameraActivity::class.java))
     }
 }

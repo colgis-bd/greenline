@@ -1,60 +1,150 @@
 package com.colgisbd.greenline
 
+import android.Manifest
+import android.Manifest.permission.CAMERA
+import android.content.DialogInterface
+import android.content.Intent
+import android.content.pm.PackageManager
+import android.hardware.Camera
+import android.net.Uri
+import android.os.Build
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v4.app.ActivityCompat
+import android.support.v4.content.ContextCompat
+import android.support.v7.app.AlertDialog
 import com.google.android.gms.vision.barcode.Barcode
 import com.google.android.gms.vision.Detector
 import android.view.SurfaceHolder
 import android.util.Log
 import android.view.View
+import android.widget.Switch
+import android.widget.Toast
 import com.google.android.gms.vision.CameraSource
 import com.google.android.gms.vision.barcode.BarcodeDetector
+import com.google.zxing.Result
 import kotlinx.android.synthetic.main.activity_camera.*
+import me.dm7.barcodescanner.zxing.ZXingScannerView
 import java.io.IOException
 
 
-class CameraActivity : AppCompatActivity() {
+class CameraActivity : AppCompatActivity() , ZXingScannerView.ResultHandler{
+
+    private val REQUEST_CAMERA: Int = 1
+    private var scannerView: ZXingScannerView? = null
+
+    override fun handleResult(result: Result?) {
+        val myResult = result!!.getText()
+        Log.d("QRCodeScanner", result.getText())
+        Log.d("QRCodeScanner", result.barcodeFormat.toString())
+
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Scan Result")
+        builder.setPositiveButton(
+            "OK"
+        ) { _, which -> scannerView!!.resumeCameraPreview(this@CameraActivity) }
+        builder.setNeutralButton("Visit") { dialog, which ->
+            val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(myResult))
+            startActivity(browserIntent)
+        }
+        builder.setMessage(result.text)
+        val alert1 = builder.create()
+        alert1.show()
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_camera)
+
+        scannerView =  ZXingScannerView(this)
+        setContentView(scannerView)
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (checkPermission() ) {
+                Toast.makeText(this@CameraActivity, "Permission is Granted", Toast.LENGTH_SHORT).show()
+            } else {
+                requestPermission()
+            }
+        }
 
     }
 
-    public fun getPicture(view: View){
-        val barcodeDetector = BarcodeDetector.Builder(this).setBarcodeFormats(Barcode.QR_CODE).build()
-
-        val cameraSource: CameraSource = CameraSource.Builder(this, barcodeDetector).setRequestedPreviewSize(900, 480).build()
-
-        this.camera_view.getHolder().addCallback(object : SurfaceHolder.Callback {
-            override fun surfaceCreated(holder: SurfaceHolder) {
-
-                try {
-                    cameraSource.start(camera_view.getHolder())
-                } catch (ie: IOException) {
-                    Log.e("CAMERA SOURCE", ie.toString())
+    public override fun onResume() {
+        super.onResume()
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (checkPermission()) {
+                if (scannerView == null) {
+                    scannerView = ZXingScannerView(this)
+                    setContentView(scannerView)
                 }
-
+                scannerView!!.setResultHandler(this)
+                scannerView!!.startCamera()
+            } else {
+                requestPermission()
             }
-            override fun surfaceChanged(holder: SurfaceHolder, format: Int, width: Int, height: Int) {}
-
-            override fun surfaceDestroyed(holder: SurfaceHolder) {
-                cameraSource.stop()
-            }
-        })
-        barcodeDetector.setProcessor(object : Detector.Processor<Barcode> {
-            override fun release() {}
-
-            override fun receiveDetections(detections: Detector.Detections<Barcode>) {
-
-                val barcodes = detections.detectedItems
-
-                if (barcodes.size() != 0) {
-                    txtContent.post(Runnable // Use the post method of the TextView
-                    {
-                        txtContent.text = barcodes.valueAt(0).displayValue
-                    })
-                }
-            }
-        })
+        }
     }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        scannerView!!.stopCamera()
+    }
+    
+    private fun checkPermission(): Boolean {
+        return (ContextCompat.checkSelfPermission(this@CameraActivity, CAMERA) == PackageManager.PERMISSION_GRANTED)
+    }
+
+    private fun requestPermission() {
+        ActivityCompat.requestPermissions(this, arrayOf(CAMERA), REQUEST_CAMERA)
+    }
+    
+    public override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        when (requestCode) {
+            REQUEST_CAMERA -> if (grantResults.size > 0) {
+
+                val cameraAccepted = grantResults[0] == PackageManager.PERMISSION_GRANTED
+                if (cameraAccepted) {
+                    Toast.makeText(
+                        applicationContext,
+                        "Permission Granted, Now you can access camera",
+                        Toast.LENGTH_LONG
+                    ).show()
+                } else {
+                    Toast.makeText(
+                        applicationContext,
+                        "Permission Denied, You cannot access and camera",
+                        Toast.LENGTH_LONG
+                    ).show()
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                        if (shouldShowRequestPermissionRationale(CAMERA)) {
+                            showMessageOKCancel("You need to allow access to both the permissions",
+                                DialogInterface.OnClickListener { dialog, which ->
+                                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                                        requestPermissions(
+                                            arrayOf(CAMERA),
+                                            REQUEST_CAMERA
+                                        )
+                                    }
+                                })
+                            return
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private fun showMessageOKCancel(message: String, okListener: DialogInterface.OnClickListener) {
+        android.support.v7.app.AlertDialog.Builder(this@CameraActivity)
+            .setMessage(message)
+            .setPositiveButton("OK", okListener)
+            .setNegativeButton("Cancel", null)
+            .create()
+            .show()
+    }
+
 }
