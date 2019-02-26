@@ -8,7 +8,7 @@
             android:layout_height="match_parent">
         <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:orientation="vertical">
             <ImageView
                     android:layout_width="match_parent"
@@ -22,7 +22,6 @@
                     android:layout_height="wrap_content"
                     android:textSize="18sp"/>
             <TextView
-                    android:onClick="barcodeResultClick"
                     android:id="@+id/textView_enterTitle"
                     android:layout_width="wrap_content"
                     android:layout_gravity="center"
@@ -38,51 +37,58 @@
                     android:background="@drawable/button_pink"
                     android:text="@string/enterTitle"/>
             <LinearLayout
-                    xmlns:android="http://schemas.android.com/apk/res/android"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="40dp"
-                    android:orientation="horizontal">
-                <Button
-                        android:onClick="cameraReader"
-                        android:id="@+id/button_driverMode"
-                        android:layout_gravity="center"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:textSize="14sp"
-                        android:paddingStart="40dp"
-                        android:paddingEnd="40dp"
-                        android:paddingTop="10dp"
-                        android:paddingBottom="10dp"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginEnd="10dp"
-                        android:background="@drawable/button_blue"
-                        android:text="@string/newReceiptText"/>
-                <Button
-                        android:id="@+id/button_workMode"
-                        android:layout_gravity="center"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:textSize="14sp"
-                        android:paddingStart="40dp"
-                        android:paddingEnd="40dp"
-                        android:paddingTop="10dp"
-                        android:paddingBottom="10dp"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginEnd="20dp"
-                        android:background="@drawable/button_blue"
-                        android:text="@string/productList"/>
+                    android:layout_width="match_parent"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginEnd="40dp"
+                    android:layout_marginBottom="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_height="200dp"
+                    android:orientation="horizontal"
+                    android:background="@drawable/border">
+                <ScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:padding="15dp">
+                        <TextView
+                                android:layout_width="match_parent"
+                                android:textSize="15sp"
+                                android:layout_height="wrap_content"
+                                android:text="@string/barcodeResultTextInvoice"/>
+                        <TextView
+                                android:layout_marginTop="20dp"
+                                android:layout_width="match_parent"
+                                android:textSize="15sp"
+                                android:layout_height="wrap_content"
+                                android:text="@string/barcodeResultTextPaymentAmount"/>
+                    </LinearLayout>
+                </ScrollView>
             </LinearLayout>
-            <LinearLayout
-                    xmlns:android="http://schemas.android.com/apk/res/android"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+            <Button
+                    android:id="@+id/button_workMode"
                     android:layout_gravity="center"
-                    android:layout_marginTop="40dp"
-                    android:orientation="horizontal">
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="35dp"
+                    android:layout_marginEnd="35dp"
+                    android:textSize="14sp"
+                    android:paddingStart="40dp"
+                    android:paddingEnd="40dp"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:background="@drawable/button_blue"
+                    android:text="@string/registration"/>
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:layout_gravity="center"
+                          android:layout_marginStart="30dp"
+                          android:layout_marginEnd="30dp"
+                          android:layout_marginTop="15dp"
+                          android:orientation="horizontal">
                 <Button
                         android:id="@+id/button_returnToPrevious"
                         android:layout_gravity="center"
@@ -95,9 +101,9 @@
                         android:layout_marginStart="20dp"
                         android:layout_marginEnd="10dp"
                         android:background="@drawable/button_green"
-                        android:text="@string/returnPrevious"/>
+                        android:text="@string/returnPrevious" />
                 <Button
-                        android:id="@+id/button_returnToMenu"
+                        android:id="@+id/button_logOut"
                         android:layout_gravity="center"
                         android:layout_width="0dp"
                         android:layout_weight="1"
@@ -108,7 +114,7 @@
                         android:layout_marginEnd="20dp"
                         android:layout_marginStart="10dp"
                         android:background="@drawable/button_green"
-                        android:text="@string/menu_title"/>
+                        android:text="@string/logout"/>
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

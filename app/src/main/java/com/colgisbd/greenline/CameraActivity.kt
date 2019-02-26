@@ -97,7 +97,7 @@ class CameraActivity : AppCompatActivity() , ZXingScannerView.ResultHandler{
         ActivityCompat.requestPermissions(this, arrayOf(CAMERA), REQUEST_CAMERA)
     }
     
-    public override fun onRequestPermissionsResult(
+    override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<out String>,
         grantResults: IntArray

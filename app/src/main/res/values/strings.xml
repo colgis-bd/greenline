@@ -24,4 +24,10 @@
     <string name="returnPrevious">戻る</string>
     <string name="newReceiptText">新規荷受</string>
     <string name="productList">荷受一覧</string>
+
+    <string name="registration">登録</string>
+    <string name="btn_nextPackage">次の荷物</string>
+    <string name="driverMenu">ドライバー メニュー</string>
+    <string name="barcodeResultTextInvoice">Invoice number: 1234567890</string>
+    <string name="barcodeResultTextPaymentAmount">COD payment amount: ¥ 20,560</string>
 </resources>

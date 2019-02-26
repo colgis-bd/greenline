@@ -2,156 +2,164 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:layout_margin="10dp"
               android:orientation="vertical">
-    <ImageView
+    <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:src="@drawable/logo"
-            android:background="#ffffff"/>
-    <TextView
-            android:id="@+id/textView_showID"
-            android:text="@string/menu_id_show"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="18sp"/>
-    <TextView
-            android:id="@+id/textView_modeTitle"
-            android:layout_width="wrap_content"
-            android:layout_gravity="center"
-            android:padding="20dp"
-            android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:textSize="30sp"
-            android:layout_marginTop="40dp"
-            android:background="@drawable/button_pink"
-            android:text="@string/driverMode"/>
-    <TableLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:orientation="vertical">
+            <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:src="@drawable/logo"
+                    android:background="#ffffff"/>
+            <TextView
+                    android:id="@+id/textView_showID"
+                    android:text="@string/menu_id_show"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"/>
+            <TextView
+                    android:id="@+id/textView_modeTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="center"
+                    android:padding="20dp"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:textSize="30sp"
+                    android:layout_marginTop="40dp"
+                    android:background="@drawable/button_pink"
+                    android:text="@string/driverMode"/>
+            <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-        <TableRow
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="20dp">
-            <Button
-                    android:onClick="barcodeClick"
-                    android:id="@+id/button_holdOut"
-                    android:layout_gravity="center"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="60dp"
-                    android:textSize="20sp"
-                    android:layout_marginEnd = "2dp"
-                    android:paddingStart="20dp"
-                    android:paddingEnd="20dp"
-                    android:background="@drawable/button_blue"
-                    android:text="@string/driverMenuOption_HoldOut"/>
-            <Button
-                    android:id="@+id/button_delivery"
-                    android:layout_gravity="center"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_marginStart = "2dp"
-                    android:layout_height="60dp"
-                    android:textSize="20sp"
-                    android:paddingStart="20dp" android:paddingEnd="20dp"
-                    android:background="@drawable/button_blue"
-                    android:text="@string/driverMenuOption_Delivery"/>
-        </TableRow>
-        <TableRow
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="20dp">
-            <Button
-                    android:id="@+id/button_deliveryCompleteList"
-                    android:layout_gravity="center"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
+                <TableRow
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="20dp">
+                    <Button
+                            android:onClick="barcodeClick"
+                            android:id="@+id/button_holdOut"
+                            android:layout_gravity="center"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="60dp"
+                            android:textSize="20sp"
+                            android:layout_marginEnd = "2dp"
+                            android:paddingStart="20dp"
+                            android:paddingEnd="20dp"
+                            android:background="@drawable/button_blue"
+                            android:text="@string/driverMenuOption_HoldOut"/>
+                    <Button
+                            android:id="@+id/button_delivery"
+                            android:layout_gravity="center"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_marginStart = "2dp"
+                            android:layout_height="60dp"
+                            android:textSize="20sp"
+                            android:paddingStart="20dp" android:paddingEnd="20dp"
+                            android:background="@drawable/button_blue"
+                            android:text="@string/driverMenuOption_Delivery"/>
+                </TableRow>
+                <TableRow
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="20dp">
+                    <Button
+                            android:id="@+id/button_deliveryCompleteList"
+                            android:layout_gravity="center"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
 
-                    android:layout_marginEnd = "2dp"
-                    android:layout_height="60dp"
-                    android:textSize="20sp"
-                    android:paddingStart="20dp" android:paddingEnd="20dp"
-                    android:background="@drawable/button_blue"
-                    android:text="@string/driverMenuOption_DeliveryCompleteList"/>
+                            android:layout_marginEnd = "2dp"
+                            android:layout_height="60dp"
+                            android:textSize="20sp"
+                            android:paddingStart="20dp" android:paddingEnd="20dp"
+                            android:background="@drawable/button_blue"
+                            android:text="@string/driverMenuOption_DeliveryCompleteList"/>
+                    <Button
+                            android:id="@+id/button_takeOutCenter"
+                            android:layout_gravity="center"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_marginStart = "2dp"
+                            android:layout_height="60dp"
+                            android:textSize="20sp"
+                            android:paddingStart="20dp" android:paddingEnd="20dp"
+                            android:background="@drawable/button_blue"
+                            android:text="@string/driverMenuOption_TakeOutCenter"/>
+                </TableRow>
+                <TableRow
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="20dp">
+                    <Button
+                            android:id="@+id/button_loadList"
+                            android:layout_gravity="center"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="60dp"
+                            android:layout_marginEnd = "2dp"
+                            android:textSize="20sp"
+                            android:paddingStart="20dp"
+                            android:paddingEnd="20dp"
+                            android:background="@drawable/button_blue"
+                            android:text="@string/driverMenuOption_LoadList"/>
+                    <Button
+                            android:id="@+id/button_highPricedItemPickup"
+                            android:layout_gravity="center"
+                            android:layout_width="0dp"
+                            android:layout_marginStart = "2dp"
+                            android:layout_weight="1"
+                            android:layout_height="60dp"
+                            android:textSize="20sp"
+                            android:paddingStart="20dp"
+                            android:paddingEnd="20dp"
+                            android:background="@drawable/button_blue"
+                            android:text="@string/driverMenuOption_HighPricedItemPickup"/>
+                </TableRow>
+                <TableRow
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="20dp">
+                    <Button
+                            android:id="@+id/button_medicalSearch"
+                            android:layout_gravity="center"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="60dp"
+                            android:layout_marginEnd = "2dp"
+                            android:textSize="20sp"
+                            android:paddingStart="20dp"
+                            android:paddingEnd="20dp"
+                            android:background="@drawable/button_blue"
+                            android:text="@string/driverMenuOption_Medical_Institution_Search"/>
+                    <Button
+                            android:id="@+id/button_plans"
+                            android:layout_gravity="center"
+                            android:layout_marginStart = "2dp"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="60dp"
+                            android:textSize="20sp"
+                            android:paddingStart="20dp"
+                            android:paddingEnd="20dp"
+                            android:background="@drawable/button_blue"
+                            android:text="@string/driverMenuOption_Plans"/>
+                </TableRow>
+            </TableLayout>
             <Button
-                    android:id="@+id/button_takeOutCenter"
+                    android:id="@+id/button_logOut"
                     android:layout_gravity="center"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_marginStart = "2dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="60dp"
-                    android:textSize="20sp"
-                    android:paddingStart="20dp" android:paddingEnd="20dp"
-                    android:background="@drawable/button_blue"
-                    android:text="@string/driverMenuOption_TakeOutCenter"/>
-        </TableRow>
-        <TableRow
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="20dp">
-            <Button
-                    android:id="@+id/button_loadList"
-                    android:layout_gravity="center"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="60dp"
-                    android:layout_marginEnd = "2dp"
+                    android:layout_marginTop="30dp"
                     android:textSize="20sp"
                     android:paddingStart="20dp"
                     android:paddingEnd="20dp"
-                    android:background="@drawable/button_blue"
-                    android:text="@string/driverMenuOption_LoadList"/>
-            <Button
-                    android:id="@+id/button_highPricedItemPickup"
-                    android:layout_gravity="center"
-                    android:layout_width="0dp"
-                    android:layout_marginStart = "2dp"
-                    android:layout_weight="1"
-                    android:layout_height="60dp"
-                    android:textSize="20sp"
-                    android:paddingStart="20dp"
-                    android:paddingEnd="20dp"
-                    android:background="@drawable/button_blue"
-                    android:text="@string/driverMenuOption_HighPricedItemPickup"/>
-        </TableRow>
-        <TableRow
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="20dp">
-            <Button
-                    android:id="@+id/button_medicalSearch"
-                    android:layout_gravity="center"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="60dp"
-                    android:layout_marginEnd = "2dp"
-                    android:textSize="20sp"
-                    android:paddingStart="20dp"
-                    android:paddingEnd="20dp"
-                    android:background="@drawable/button_blue"
-                    android:text="@string/driverMenuOption_Medical_Institution_Search"/>
-            <Button
-                    android:id="@+id/button_plans"
-                    android:layout_gravity="center"
-                    android:layout_marginStart = "2dp"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="60dp"
-                    android:textSize="20sp"
-                    android:paddingStart="20dp"
-                    android:paddingEnd="20dp"
-                    android:background="@drawable/button_blue"
-                    android:text="@string/driverMenuOption_Plans"/>
-        </TableRow>
-    </TableLayout>
-
-    <Button
-            android:id="@+id/button_logOut"
-            android:layout_gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="60dp"
-            android:layout_marginTop="30dp"
-            android:textSize="20sp"
-            android:paddingStart="20dp"
-            android:paddingEnd="20dp"
-            android:background="@drawable/button_green"
-            android:text="@string/logout"/>
+                    android:background="@drawable/button_green"
+                    android:text="@string/logout"/>
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>
