@@ -35,26 +35,32 @@ class CameraActivity : AppCompatActivity() , ZXingScannerView.ResultHandler{
 
     override fun handleResult(result: Result?) {
         val myResult = result!!.getText()
+        Log.d("QRCodeScanner", "----------------------------------------")
         Log.d("QRCodeScanner", result.getText())
         Log.d("QRCodeScanner", result.barcodeFormat.toString())
+        Log.d("QRCodeScanner", "----------------------------------------")
 
-        val builder = AlertDialog.Builder(this)
-        builder.setTitle("Scan Result")
-        builder.setPositiveButton(
-            "OK"
-        ) { _, which -> scannerView!!.resumeCameraPreview(this@CameraActivity) }
-        builder.setNeutralButton("Visit") { dialog, which ->
-            val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(myResult))
-            startActivity(browserIntent)
-        }
-        builder.setMessage(result.text)
-        val alert1 = builder.create()
-        alert1.show()
+//        val builder = AlertDialog.Builder(this)
+//        builder.setTitle("Scan Result")
+//        builder.setPositiveButton(
+//            "OK"
+//        ) { _, which -> scannerView!!.resumeCameraPreview(this@CameraActivity) }
+//        builder.setNeutralButton("Visit") { dialog, which ->
+//            val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(myResult))
+//            startActivity(browserIntent)
+//        }
+//        builder.setMessage(result.text)
+//        val alert1 = builder.create()
+//        alert1.show()
+        val name = intent.getStringExtra("userName")
+        val intent2 = Intent(this@CameraActivity, BarcodeResult::class.java)
+        intent2.putExtra("result",result.text)
+        intent2.putExtra("userName",name)
+        startActivity(intent2)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         scannerView =  ZXingScannerView(this)
         setContentView(scannerView)
 

@@ -30,4 +30,5 @@
     <string name="driverMenu">ドライバー メニュー</string>
     <string name="barcodeResultTextInvoice">Invoice number: 1234567890</string>
     <string name="barcodeResultTextPaymentAmount">COD payment amount: ¥ 20,560</string>
+    <string name="barcodeResult">Barcode Result:</string>
 </resources>
